@@ -1,0 +1,8 @@
+#terminal-container {
+  display: inline-block;
+  width: 100%;
+}
+
+.function {
+  display: inline-block;
+}
