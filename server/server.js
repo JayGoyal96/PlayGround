@@ -4,7 +4,8 @@ const utf8 = require("utf8");
 const app = express();
 const serverPort = 4000;
 const server = http.createServer(app);
-
+const fs = require("fs");
+const path = require("path");
 const Docker = require("dockerode");
 
 server.listen(serverPort);
@@ -26,14 +27,27 @@ io.on("connection", function (socket) {
   socket.on("disconnect", function () {
     console.log("Client disconnected");
     docker.getContainer(dockerid).kill();
+    console.log("Container killed");
+  });
+  socket.on("msg", function (data) {
+    fs.writeFile(path.join(__dirname,"/Dcode/index.js"), data, function (err) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+    });
   });
   docker.createContainer(
     {
       Image: "ubuntu",
       Tty: true,
       OpenStdin: true,
-      StdinOnce: false,
-      AutoRemove: true,
+      StdinOnce: true,
+      WorkingDir: "/home/code",
+      HostConfig: {
+        AutoRemove: true,
+        Binds: [`${__dirname + "/Dcode/"}:/home/code/`],
+      },
     },
     function (err, container) {
       if (err) {
@@ -58,9 +72,6 @@ io.on("connection", function (socket) {
           });
           stream.on("data", function (data) {
             socket.emit("data", utf8.decode(data.toString("binary")));
-          })
-          .on("close", function() {
-            container.kill();
           });
           container.start(function (err, data) {
             if (err) {

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TerminalEditor from './Terminal';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <TerminalEditor/>
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

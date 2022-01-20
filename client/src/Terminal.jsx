@@ -1,14 +1,12 @@
-import io from "socket.io-client";
 import { useEffect, useRef } from "react";
 import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import "xterm/css/xterm.css";
 import "./terminal.css";
-
+import socket from "./helper";
 const TerminalEditor = () => {
   const terminalContainer = useRef(null);
   useEffect(() => {
-    const socket = io.connect("http://localhost:4000");
     const term = new Terminal({
       cursorBlink: true,
       convertEol: true,
@@ -41,6 +39,7 @@ const TerminalEditor = () => {
     });
     return () => {
       term.dispose();
+      socket.disconnect();
     }
   }, []);
 
