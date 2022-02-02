@@ -29,14 +29,7 @@ io.on("connection", function (socket) {
     docker.getContainer(dockerid).kill();
     console.log("Container killed");
   });
-  socket.on("msg", function (data) {
-    fs.writeFile(path.join(__dirname,"/Dcode/index.js"), data, function (err) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-    });
-  });
+
   docker.createContainer(
     {
       Image: "ubuntu",
@@ -47,7 +40,7 @@ io.on("connection", function (socket) {
       HostConfig: {
         AutoRemove: true,
         Binds: [`${__dirname + "/Dcode/"}:/home/code/`],
-      },
+      }
     },
     function (err, container) {
       if (err) {
@@ -79,6 +72,18 @@ io.on("connection", function (socket) {
               return;
             }
             console.log("Container started");
+          });
+          socket.on("msg", function (data) {
+            fs.writeFile(
+              path.join(__dirname, "/Dcode/index.js"),
+              data,
+              function (err) {
+                if (err) {
+                  console.log(err);
+                  return;
+                }
+              }
+            );
           });
         }
       );
