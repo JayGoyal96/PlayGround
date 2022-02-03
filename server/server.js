@@ -18,7 +18,8 @@ const io = require("socket.io")(server, {
   },
 });
 
-var dockerid = "";
+let dockerid = "";
+let files = [];
 //Socket Connection
 
 io.on("connection", function (socket) {
@@ -40,7 +41,7 @@ io.on("connection", function (socket) {
       HostConfig: {
         AutoRemove: true,
         Binds: [`${__dirname + "/Dcode/"}:/home/code/`],
-      }
+      },
     },
     function (err, container) {
       if (err) {
@@ -73,20 +74,21 @@ io.on("connection", function (socket) {
             }
             console.log("Container started");
           });
-          socket.on("msg", function (data) {
-            fs.writeFile(
-              path.join(__dirname, "/Dcode/index.js"),
-              data,
-              function (err) {
-                if (err) {
-                  console.log(err);
-                  return;
-                }
-              }
-            );
-          });
         }
       );
     }
   );
+  socket.on("msg", function (data) {
+    fs.writeFile(path.join(__dirname, "/Dcode/index.js"), data, function (err) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+    });
+  });
+  
+  files = fs.readdirSync(path.join(__dirname, "/Dcode/"), {
+    encoding: "utf8",
+  });
+  socket.emit("filesystem", files);
 });

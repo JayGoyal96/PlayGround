@@ -4,16 +4,19 @@ import { useEffect, useState } from "react";
 import socket from "./helper.jsx";
 const App = () => {
   const [selectedLang, setSelectedLang] = useState("javascript");
-  const [code, setCode] = useState(
-    `console.log("Hello World!");\n`
-  );
+  const [code, setCode] = useState(`console.log("Hello World!");\n`);
+  const [files, setfiles] = useState([]);
   useEffect(() => {
     socket.emit("msg", code);
-    }, [code]);
+  }, [code]);
+  useEffect(() => {
+    socket.on("filesystem", (file) => {
+      setfiles(file);
+    });
+  }, [files]);
   return (
     <div
       style={{
-        display: "flex",
         width: "100%",
       }}
     >
@@ -31,7 +34,26 @@ const App = () => {
           scrollBeyondLastLine: false,
         }}
       />
-      <TerminalEditor />
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+        }}
+      >
+        <TerminalEditor />
+        <div
+          className="filesys"
+          style={{
+            width: "50%",
+          }}
+        >
+          <ul>
+            {files.map((file) => {
+              return <li>{file}</li>;
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
