@@ -1,8 +1,9 @@
 ### PlayGround
+>P.S. This Project Is Still In It's Initial Stages Of Development
 
 ##### Screenshots
 #### [Desktop]
-![asset](https://github.com/JayGoyal96/PlayGround/blob/master/asset/1.png?raw=true)
+![asset](https://github.com/JayGoyal96/PlayGround/blob/master/asset/1.png?raw=false)
 
 ## Dependencies
 #### [Server]
