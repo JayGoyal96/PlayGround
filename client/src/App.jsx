@@ -15,44 +15,30 @@ const App = () => {
     });
   }, [files]);
   return (
-    <div
-      style={{
-        width: "100%",
-      }}
-    >
-      <Editor
-        height="80vh"
-        defaultLanguage={selectedLang}
-        theme="vs-dark"
-        defaultValue={code}
-        onChange={(value) => {
-          setCode(value);
-        }}
-        language={selectedLang}
-        value={code}
-        options={{
-          scrollBeyondLastLine: false,
-        }}
-      />
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-        }}
-      >
-        <TerminalEditor />
-        <div
-          className="filesys"
-          style={{
-            width: "50%",
+    <div style={{ width: "100%",display:"flex",background:"black"}}>
+      <div className="filesys" style={{width:"20%",color:"white"}}>
+        <ul>
+          {files.map((file) => {
+            return <li>{file}</li>;
+          })}
+        </ul>
+      </div>
+      <div style={{ display: "flex", width: "80%" , flexDirection:"column"}}>
+        <Editor
+          height="60vh"
+          defaultLanguage={selectedLang}
+          theme="vs-dark"
+          defaultValue={code}
+          onChange={(value) => {
+            setCode(value);
           }}
-        >
-          <ul>
-            {files.map((file) => {
-              return <li>{file}</li>;
-            })}
-          </ul>
-        </div>
+          language={selectedLang}
+          value={code}
+          options={{
+            scrollBeyondLastLine: false,
+          }}
+        />
+        <TerminalEditor />
       </div>
     </div>
   );

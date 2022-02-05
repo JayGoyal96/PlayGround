@@ -66,6 +66,10 @@ io.on("connection", function (socket) {
           });
           stream.on("data", function (data) {
             socket.emit("data", utf8.decode(data.toString("binary")));
+            files = fs.readdirSync(path.join(__dirname, "/Dcode/"), {
+              encoding: "utf8",
+            });
+            socket.emit("filesystem", files);
           });
           container.start(function (err, data) {
             if (err) {
@@ -86,9 +90,4 @@ io.on("connection", function (socket) {
       }
     });
   });
-  
-  files = fs.readdirSync(path.join(__dirname, "/Dcode/"), {
-    encoding: "utf8",
-  });
-  socket.emit("filesystem", files);
 });

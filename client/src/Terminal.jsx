@@ -44,9 +44,9 @@ const TerminalEditor = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div id="terminal-container" ref={terminalContainer}></div>
-    </div>
+    </>
   );
 };
 

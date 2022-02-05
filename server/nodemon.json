@@ -1,3 +1,3 @@
 {
-    "ignore":["Dcode/*.js"]
+    "ignore":["Dcode/*"]
 }
