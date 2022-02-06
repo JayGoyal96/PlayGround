@@ -18,8 +18,13 @@
 * xterm.js
 
 ## Setup
+- Download and Install Docker Desktop Client
+- Pull ubuntu container
 
-Clone the repo and install the dependencies 
+```bash
+docker pull ubuntu
+```
+- Clone the repo and install the dependencies 
 
 ```bash
 git clone https://github.com/JayGoyal96/PlayGround.git
@@ -29,7 +34,7 @@ cd ..
 cd server
 npm install
 ```
-To run the app, write
+- To run the app, write
 
 ```bash
 cd client
