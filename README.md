@@ -22,7 +22,7 @@
 - Pull ubuntu container
 
 ```bash
-docker pull ubuntu
+docker pull jaygoyal96/linux
 ```
 - Clone the repo and install the dependencies 
 

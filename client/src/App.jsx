@@ -2,6 +2,7 @@ import TerminalEditor from "./Terminal";
 import Editor from "@monaco-editor/react";
 import { useEffect, useState } from "react";
 import socket from "./helper.jsx";
+import Folder from "./Folder";
 const App = () => {
   const [selectedLang, setSelectedLang] = useState("javascript");
   const [code, setCode] = useState(`console.log("Hello World!");\n`);
@@ -17,11 +18,7 @@ const App = () => {
   return (
     <div style={{ width: "100%",display:"flex",background:"black"}}>
       <div className="filesys" style={{width:"20%",color:"white"}}>
-        <ul>
-          {files.map((file) => {
-            return <li>{file}</li>;
-          })}
-        </ul>
+        <Folder explorer={files} />
       </div>
       <div style={{ display: "flex", width: "80%" , flexDirection:"column"}}>
         <Editor

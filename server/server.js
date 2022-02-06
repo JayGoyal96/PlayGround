@@ -33,7 +33,7 @@ io.on("connection", function (socket) {
 
   docker.createContainer(
     {
-      Image: "ubuntu",
+      Image: "jaygoyal96/linux",
       Tty: true,
       OpenStdin: true,
       StdinOnce: true,
