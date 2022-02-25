@@ -7,6 +7,7 @@ const server = http.createServer(app);
 const fs = require("fs");
 const path = require("path");
 const Docker = require("dockerode");
+const dirTree = require("directory-tree");
 
 server.listen(serverPort);
 
@@ -41,6 +42,12 @@ io.on("connection", function (socket) {
       HostConfig: {
         AutoRemove: true,
         Binds: [`${__dirname + "/Dcode/"}:/home/code/`],
+        PortBindings: {
+          "3000/tcp": [{ HostPort: "3001" }],
+        },
+      },
+      ExposedPorts: {
+        "3000/tcp": {},
       },
     },
     function (err, container) {
@@ -66,9 +73,7 @@ io.on("connection", function (socket) {
           });
           stream.on("data", function (data) {
             socket.emit("data", utf8.decode(data.toString("binary")));
-            files = fs.readdirSync(path.join(__dirname, "/Dcode/"), {
-              encoding: "utf8",
-            });
+            files = dirTree(path.join(__dirname, "/Dcode/"),{attributes:["type","extension"]});
             socket.emit("filesystem", files);
           });
           container.start(function (err, data) {
@@ -82,12 +87,21 @@ io.on("connection", function (socket) {
       );
     }
   );
-  socket.on("msg", function (data) {
-    fs.writeFile(path.join(__dirname, "/Dcode/index.js"), data, function (err) {
+  socket.on("msg", function (code, file) {
+    fs.writeFile(path.join(__dirname, `/Dcode/${file}`), code, function (err) {
       if (err) {
         console.log(err);
         return;
       }
+    });
+  });
+  socket.on("content", function (file) {
+    fs.readFile(path.join(__dirname, `/Dcode/${file}`), function (err, data) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      socket.emit("content", data.toString());
     });
   });
 });

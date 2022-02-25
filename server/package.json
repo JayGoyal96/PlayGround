@@ -9,6 +9,7 @@
   "author": "Jay Goyal",
   "license": "ISC",
   "dependencies": {
+    "directory-tree": "^3.2.2",
     "dockerode": "^3.3.1",
     "express": "^4.17.2",
     "nodemon": "^2.0.15",

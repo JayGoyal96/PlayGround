@@ -5,22 +5,45 @@ import socket from "./helper.jsx";
 import Folder from "./Folder";
 const App = () => {
   const [selectedLang, setSelectedLang] = useState("javascript");
-  const [code, setCode] = useState(`console.log("Hello World!");\n`);
+  const [code, setCode] = useState("");
   const [files, setfiles] = useState([]);
+  const [selectedFile, setSelectedFile] = useState("index.js");
+
   useEffect(() => {
-    socket.emit("msg", code);
+    socket.emit("content",selectedFile);  //send the file name to the server
+
+    socket.on("content", (data) => {
+      setCode(data);
+    });
+  }, [selectedFile]);
+
+  useEffect(() => {
+    socket.emit("msg", code , selectedFile);
   }, [code]);
+
   useEffect(() => {
     socket.on("filesystem", (file) => {
       setfiles(file);
     });
   }, [files]);
+
   return (
-    <div style={{ width: "100%",display:"flex",background:"black"}}>
-      <div className="filesys" style={{width:"20%",color:"white"}}>
-        <Folder explorer={files} />
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        background: "black",
+        maxHeight: "100vh",
+      }}
+    >
+      <div
+        className="filesys"
+        style={{ width: "20%", color: "white", overflowY: "scroll" }}
+      >
+        <Folder explorer={files} setlang={setSelectedLang} setFile={setSelectedFile}/>
       </div>
-      <div style={{ display: "flex", width: "80%" , flexDirection:"column"}}>
+
+      <div style={{ display: "flex", width: "80%", flexDirection: "column" }}>
         <Editor
           height="60vh"
           defaultLanguage={selectedLang}
@@ -35,6 +58,7 @@ const App = () => {
             scrollBeyondLastLine: false,
           }}
         />
+
         <TerminalEditor />
       </div>
     </div>
