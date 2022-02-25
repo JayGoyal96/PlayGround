@@ -1,5 +1,5 @@
 {
-  "name": "ssh-container-connection",
+  "name": "server",
   "version": "1.0.0",
   "description": "This Project is to use to when we need to access Containers in NodeJs environment",
   "main": "server.js",
