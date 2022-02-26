@@ -59,7 +59,7 @@ const Folder = ({ explorer, setlang ,setFile }) => {
   };
 
   const handleClick = (e) => {
-    setFile(e.target.innerText);
+    setFile(e.target.getAttribute("path"));
     setlang(extToLangID(e.target.getAttribute("ext")));
   };
 
@@ -92,7 +92,7 @@ const Folder = ({ explorer, setlang ,setFile }) => {
   } else {
     return (
       <div>
-        <span onClick={handleClick} ext={explorer.extension}>
+        <span onClick={handleClick} ext={explorer.extension} path={explorer.path}>
           {explorer.name}
         </span>
         <br />

@@ -73,7 +73,7 @@ io.on("connection", function (socket) {
           });
           stream.on("data", function (data) {
             socket.emit("data", utf8.decode(data.toString("binary")));
-            files = dirTree(path.join(__dirname, "/Dcode/"),{attributes:["type","extension"]});
+            files = dirTree("./Dcode/",{attributes:["type","extension"]});
             socket.emit("filesystem", files);
           });
           container.start(function (err, data) {
@@ -88,7 +88,7 @@ io.on("connection", function (socket) {
     }
   );
   socket.on("msg", function (code, file) {
-    fs.writeFile(path.join(__dirname, `/Dcode/${file}`), code, function (err) {
+    fs.writeFile(path.join(__dirname, `/${file}`), code, function (err) {
       if (err) {
         console.log(err);
         return;
@@ -96,7 +96,7 @@ io.on("connection", function (socket) {
     });
   });
   socket.on("content", function (file) {
-    fs.readFile(path.join(__dirname, `/Dcode/${file}`), function (err, data) {
+    fs.readFile(path.join(__dirname, `/${file}`), function (err, data) {
       if (err) {
         console.log(err);
         return;

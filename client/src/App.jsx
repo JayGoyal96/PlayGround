@@ -7,7 +7,7 @@ const App = () => {
   const [selectedLang, setSelectedLang] = useState("javascript");
   const [code, setCode] = useState("");
   const [files, setfiles] = useState([]);
-  const [selectedFile, setSelectedFile] = useState("index.js");
+  const [selectedFile, setSelectedFile] = useState("/Dcode/index.js");
 
   useEffect(() => {
     socket.emit("content",selectedFile);  //send the file name to the server
