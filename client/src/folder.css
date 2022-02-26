@@ -1,0 +1,75 @@
+.flex{
+  display: flex;
+}
+
+.file{
+  display: flex;
+}
+
+.file::before {
+  content: url("../assets/file.svg");
+  margin-right: 3px;
+}
+.folder::before {
+  content: "📁";
+}
+
+.javascript::before {
+  content: url("../assets/js.svg");
+}
+
+.html::before {
+  content: "🌏";
+}
+
+.css::before {
+  content: "🎨";
+}
+
+.typescript::before {
+  content: "💻";
+}
+
+.json::before {
+  content: url("../assets/json.svg");
+}
+
+.python::before {
+  content: "🐍";
+}
+
+.c::before {
+  content: url("../assets/c.svg");
+}
+
+.cpp::before {
+  content: url("../assets/c.svg");
+}
+
+.java::before {
+  content: "☕";
+}
+
+.markdown::before {
+  content: "📝";
+}
+
+.text::before {
+  content: "📄";
+}
+
+.xml::before {
+  content: "❕";
+  margin-left: 4px;
+  margin-right: 3px;
+}
+
+.yaml::before {
+  content: "❗";
+  margin-left: 4px;
+  margin-right: 3px;
+}
+
+.gitignore::before {
+  content: url("../assets/git.svg");
+}

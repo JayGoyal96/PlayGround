@@ -10,7 +10,7 @@ const App = () => {
   const [selectedFile, setSelectedFile] = useState("/Dcode/index.js");
 
   useEffect(() => {
-    socket.emit("content",selectedFile);  //send the file name to the server
+    socket.emit("content", selectedFile); //send the file name to the server
 
     socket.on("content", (data) => {
       setCode(data);
@@ -18,7 +18,7 @@ const App = () => {
   }, [selectedFile]);
 
   useEffect(() => {
-    socket.emit("msg", code , selectedFile);
+    socket.emit("msg", code, selectedFile);
   }, [code]);
 
   useEffect(() => {
@@ -40,7 +40,11 @@ const App = () => {
         className="filesys"
         style={{ width: "20%", color: "white", overflowY: "scroll" }}
       >
-        <Folder explorer={files} setlang={setSelectedLang} setFile={setSelectedFile}/>
+        <Folder
+          explorer={files}
+          setlang={setSelectedLang}
+          setFile={setSelectedFile}
+        />
       </div>
 
       <div style={{ display: "flex", width: "80%", flexDirection: "column" }}>

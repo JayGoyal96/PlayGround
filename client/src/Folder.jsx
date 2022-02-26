@@ -1,6 +1,6 @@
 import React from "react";
-
-const Folder = ({ explorer, setlang ,setFile }) => {
+import "./folder.css";
+const Folder = ({ explorer, setlang, setFile }) => {
   const [expand, setExpand] = React.useState(false);
 
   const extToLangID = (ext) => {
@@ -19,7 +19,7 @@ const Folder = ({ explorer, setlang ,setFile }) => {
 
       case ".json":
         return "json";
-      
+
       case ".ts":
         return "typescript";
 
@@ -31,21 +31,18 @@ const Folder = ({ explorer, setlang ,setFile }) => {
 
       case ".c":
         return "c";
-        
+
       case ".cpp":
         return "cpp";
 
       case ".java":
         return "java";
-      
+
       case ".md":
         return "markdown";
 
       case ".txt":
         return "text";
-
-      case ".sh":
-        return "shell";
 
       case ".xml":
         return "xml";
@@ -53,8 +50,11 @@ const Folder = ({ explorer, setlang ,setFile }) => {
       case ".yml":
         return "yaml";
 
+      case ".gitignore":
+        return "gitignore";
+
       default:
-        break;
+        return "file";
     }
   };
 
@@ -70,12 +70,13 @@ const Folder = ({ explorer, setlang ,setFile }) => {
           onClick={() => {
             setExpand(!expand);
           }}
+          className="folder"
         >
           {explorer.name}
           <br />
         </span>
-        <div style={{ display: expand ? "block" : "none", paddingLeft: 15 }}>
-          {explorer.children.map((exp) => {
+        <div style={{ paddingLeft: 15 }}>
+          {expand && explorer.children.map((exp) => {
             return (
               <Folder
                 key={exp.name}
@@ -91,8 +92,13 @@ const Folder = ({ explorer, setlang ,setFile }) => {
     );
   } else {
     return (
-      <div>
-        <span onClick={handleClick} ext={explorer.extension} path={explorer.path}>
+      <div style={{display:"flex"}}>
+        <span
+          onClick={handleClick}
+          ext={explorer.extension}
+          path={explorer.path}
+          className={"flex "+extToLangID(explorer.extension)}
+        >
           {explorer.name}
         </span>
         <br />
