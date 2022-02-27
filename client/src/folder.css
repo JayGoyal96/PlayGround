@@ -2,16 +2,19 @@
   display: flex;
 }
 
-.file{
-  display: flex;
+.flex::before{
+  margin-right: 3px;
 }
 
 .file::before {
   content: url("../assets/file.svg");
-  margin-right: 3px;
 }
-.folder::before {
-  content: "📁";
+.fclosed::before {
+  content: url("../assets/fclosed.svg");
+}
+
+.fopen::before {
+  content: url("../assets/fopen.svg");
 }
 
 .javascript::before {
@@ -19,15 +22,15 @@
 }
 
 .html::before {
-  content: "🌏";
+  content: url("../assets/html.svg");
 }
 
 .css::before {
-  content: "🎨";
+  content: url("../assets/css.svg");
 }
 
 .typescript::before {
-  content: "💻";
+  content: url("../assets/js.svg");
 }
 
 .json::before {
@@ -36,6 +39,7 @@
 
 .python::before {
   content: "🐍";
+  margin-right: 0;
 }
 
 .c::before {
@@ -47,27 +51,23 @@
 }
 
 .java::before {
-  content: "☕";
+  content: url("../assets/java.svg");
 }
 
 .markdown::before {
-  content: "📝";
+  content: url("../assets/md.svg");
 }
 
 .text::before {
-  content: "📄";
+  content: url("../assets/file.svg");
 }
 
 .xml::before {
-  content: "❕";
-  margin-left: 4px;
-  margin-right: 3px;
+  content: url("../assets/yaml.svg");
 }
 
 .yaml::before {
-  content: "❗";
-  margin-left: 4px;
-  margin-right: 3px;
+  content: url("../assets/yaml.svg");
 }
 
 .gitignore::before {

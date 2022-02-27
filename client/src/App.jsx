@@ -34,6 +34,7 @@ const App = () => {
         display: "flex",
         background: "black",
         maxHeight: "100vh",
+        alignItems: "stretch",
       }}
     >
       <div

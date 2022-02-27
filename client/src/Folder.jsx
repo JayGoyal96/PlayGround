@@ -70,7 +70,7 @@ const Folder = ({ explorer, setlang, setFile }) => {
           onClick={() => {
             setExpand(!expand);
           }}
-          className="folder"
+          className={`flex ${!expand ? "fclosed" : "fopen"}`}
         >
           {explorer.name}
           <br />
