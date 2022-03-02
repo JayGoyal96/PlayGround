@@ -3,7 +3,7 @@ import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import "xterm/css/xterm.css";
 import "./terminal.css";
-import socket from "./helper";
+import socket from "../helper.jsx";
 const TerminalEditor = () => {
   const terminalContainer = useRef(null);
   useEffect(() => {

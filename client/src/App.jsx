@@ -1,8 +1,10 @@
-import TerminalEditor from "./Terminal";
+import TerminalEditor from "./Components/Terminal";
 import Editor from "@monaco-editor/react";
 import { useEffect, useState } from "react";
+import Split from "react-split";
 import socket from "./helper.jsx";
-import Folder from "./Folder";
+import Folder from "./Components/Folder";
+import "./app.css";
 const App = () => {
   const [selectedLang, setSelectedLang] = useState("javascript");
   const [code, setCode] = useState("");
@@ -28,13 +30,13 @@ const App = () => {
   }, [files]);
 
   return (
-    <div
+    <Split
+      sizes={[15, 85]}
       style={{
-        width: "100%",
         display: "flex",
         background: "black",
-        maxHeight: "100vh",
-        alignItems: "stretch",
+        width: "100%",
+        height: "100vh",
       }}
     >
       <div
@@ -47,8 +49,7 @@ const App = () => {
           setFile={setSelectedFile}
         />
       </div>
-
-      <div style={{ display: "flex", width: "80%", flexDirection: "column" }}>
+      <Split direction="vertical" sizes={[70, 30]}>
         <Editor
           height="60vh"
           defaultLanguage={selectedLang}
@@ -63,10 +64,9 @@ const App = () => {
             scrollBeyondLastLine: false,
           }}
         />
-
         <TerminalEditor />
-      </div>
-    </div>
+      </Split>
+    </Split>
   );
 };
 

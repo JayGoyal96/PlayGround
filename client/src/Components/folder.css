@@ -1,0 +1,75 @@
+.flex{
+  display: flex;
+}
+
+.flex::before{
+  margin-right: 3px;
+}
+
+.file::before {
+  content: url("../../assets/file.svg");
+}
+.fclosed::before {
+  content: url("../../assets/fclosed.svg");
+}
+
+.fopen::before {
+  content: url("../../assets/fopen.svg");
+}
+
+.javascript::before {
+  content: url("../../assets/js.svg");
+}
+
+.html::before {
+  content: url("../../assets/html.svg");
+}
+
+.css::before {
+  content: url("../../assets/css.svg");
+}
+
+.typescript::before {
+  content: url("../../assets/js.svg");
+}
+
+.json::before {
+  content: url("../../assets/json.svg");
+}
+
+.python::before {
+  content: "🐍";
+  margin-right: 0;
+}
+
+.c::before {
+  content: url("../../assets/c.svg");
+}
+
+.cpp::before {
+  content: url("../../assets/c.svg");
+}
+
+.java::before {
+  content: url("../../assets/java.svg");
+}
+
+.markdown::before {
+  content: url("../../assets/md.svg");
+}
+
+.text::before {
+  content: url("../../assets/file.svg");
+}
+
+.xml::before {
+  content: url("../../assets/yaml.svg");
+}
+
+.yaml::before {
+  content: url("../../assets/yaml.svg");
+}
+
+.gitignore::before {
+  content: url("../../assets/git.svg");
+}
