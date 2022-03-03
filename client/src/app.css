@@ -1,12 +1,43 @@
-.gutter{
-    background-color: #3b3b3b;
+* {
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
+    Noto Color Emoji;
 }
-.gutter:hover{
-    background-color: #14b3ff;
+
+.m-0 {
+  margin: 0;
 }
-.gutter-vertical{
-    cursor: row-resize;
+.w-100 {
+  width: 100%;
 }
-.gutter-horizontal{
-    cursor: col-resize;
+.h-100 {
+  height: 100%;
+}
+.flex {
+  display: flex;
+}
+
+/* splitz */
+.gutter {
+  background-color: #3b3b3b;
+}
+.gutter:hover {
+  background-color: #14b3ff;
+}
+.gutter-vertical {
+  cursor: row-resize;
+}
+.gutter-horizontal {
+  cursor: col-resize;
+}
+
+/* terminal */
+#terminal-container {
+  width: 100%;
+  height: 100%;
+}
+
+.function {
+  display: inline-block;
 }

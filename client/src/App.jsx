@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import Split from "react-split";
 import socket from "./helper.jsx";
 import Folder from "./Components/Folder";
+import Browser from "./Components/Browser";
 import "./app.css";
 const App = () => {
   const [selectedLang, setSelectedLang] = useState("javascript");
   const [code, setCode] = useState("");
   const [files, setfiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState("/Dcode/index.js");
+  const [link, setlink] = useState("http://localhost:3001");
 
   useEffect(() => {
     socket.emit("content", selectedFile); //send the file name to the server
@@ -31,17 +33,16 @@ const App = () => {
 
   return (
     <Split
-      sizes={[15, 85]}
+      sizes={[15, 45, 40]}
       style={{
-        display: "flex",
         background: "black",
-        width: "100%",
         height: "100vh",
       }}
+      className="w-100 flex"
     >
       <div
         className="filesys"
-        style={{ width: "20%", color: "white", overflowY: "scroll" }}
+        style={{ width: "20%", color: "white", overflowY: "auto" }}
       >
         <Folder
           explorer={files}
@@ -49,23 +50,29 @@ const App = () => {
           setFile={setSelectedFile}
         />
       </div>
-      <Split direction="vertical" sizes={[70, 30]}>
-        <Editor
-          height="60vh"
-          defaultLanguage={selectedLang}
-          theme="vs-dark"
-          defaultValue={code}
-          onChange={(value) => {
-            setCode(value);
-          }}
-          language={selectedLang}
-          value={code}
-          options={{
-            scrollBeyondLastLine: false,
-          }}
-        />
+      <Split direction="vertical" sizes={[80, 20]}>
+        <div>
+          <div style={{width: "max-content", height: "20px", color: "white",background:"#2d2d2d"}}>
+            <p style={{margin:"0px 5px 0px 5px",fontSize:"smaller"}}>{selectedFile.split("\\").slice(-1)[0]}</p>
+          </div>
+          <Editor
+            height="calc(100% - 20px)"
+            defaultLanguage={selectedLang}
+            theme="vs-dark"
+            defaultValue={code}
+            onChange={(value) => {
+              setCode(value);
+            }}
+            language={selectedLang}
+            value={code}
+            options={{
+              scrollBeyondLastLine: false,
+            }}
+          />
+        </div>
         <TerminalEditor />
       </Split>
+      <Browser link={link} setlink={setlink} />
     </Split>
   );
 };
