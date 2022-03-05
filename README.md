@@ -1,5 +1,10 @@
 ### PlayGround
->P.S. This Project Is Still In It's Initial Stages Of Development
+
+I noticed that at an initial stage where students learn a lot from tutorials, e-learning platforms, etc. While Implementing whatever learnt setting up a local development environment or even downloading specific IDE was a common barrier which results in a ***Tutorial hell***. So building the IDE in a browser, I sought to provide a simpler entry point for people to get started with their programming journey.
+
+It allows students get a taste of programming with real-world tools which developers use. Unlike a REPL, which executes a few lines of simple code, the IDE in the browser allows students to experience a more complex interaction between editing different files and executing them from a command line, keeping them at ease and thus making learning a wonderful experience.
+
+>P.S: This Project Is Still In It's Initial Stages Of Development
 
 #### [Back-End]
 The IDE backend is responsible for spinning up new Docker containers for each user. It use sockets to communicate from the browser client, and client pipe commands from the user’s terminal into his or her corresponding Docker container and it also pipe the container output back to the client. Meanwhile, it also have a process watching for file system changes and sending those down to the client so it can construct a representation of the file tree.
