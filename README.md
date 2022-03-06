@@ -1,7 +1,10 @@
 ### PlayGround
+Playground is an In-Browser IDE which soughts to provide user a wholesome experience.
 
+#### Why Playground?
 I noticed that at an initial stage where students learn a lot from tutorials, e-learning platforms, etc. While Implementing whatever learnt setting up a local development environment or even downloading specific IDE was a common barrier which results in a ***Tutorial hell***. So building the IDE in a browser, I sought to provide a simpler entry point for people to get started with their programming journey.
 
+#### What makes it different from others?
 It allows students get a taste of programming with real-world tools which developers use. Unlike a REPL, which executes a few lines of simple code, the IDE in the browser allows students to experience a more complex interaction between editing different files and executing them from a command line, keeping them at ease and thus making learning a wonderful experience.
 
 >P.S: This Project Is Still In It's Initial Stages Of Development
@@ -14,7 +17,7 @@ For file tree it uses React component that recurses over a JSON payload containi
 
 ##### Screenshots
 #### [Desktop]
-![asset](https://raw.githubusercontent.com/JayGoyal96/PlayGround/master/asset/1.png?token=GHSAT0AAAAAABRCKPT4GJCNO5H7FV3IJW5IYRNYEUA)
+![asset](https://github.com/JayGoyal96/PlayGround/blob/master/asset/1.png)
 
 ## Dependencies
 #### [Server]
@@ -30,7 +33,7 @@ For file tree it uses React component that recurses over a JSON payload containi
 
 ## Setup
 - Download and Install Docker Desktop Client
-- Pull ubuntu container
+- Pull linux container
 
 ```bash
 docker pull jaygoyal96/linux
