@@ -14,7 +14,7 @@ For file tree it uses React component that recurses over a JSON payload containi
 
 ##### Screenshots
 #### [Desktop]
-![asset](https://github.com/JayGoyal96/PlayGround/blob/master/asset/1.png?raw=false)
+![asset](https://raw.githubusercontent.com/JayGoyal96/PlayGround/master/asset/1.png?token=GHSAT0AAAAAABRCKPT4GJCNO5H7FV3IJW5IYRNYEUA)
 
 ## Dependencies
 #### [Server]
