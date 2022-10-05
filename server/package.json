@@ -12,7 +12,7 @@
     "directory-tree": "^3.2.2",
     "dockerode": "^3.3.1",
     "express": "^4.17.2",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.20",
     "socket.io": "^4.4.1",
     "utf8": "^3.0.0"
   }
