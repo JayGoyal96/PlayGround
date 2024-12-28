@@ -1,3 +1,4 @@
 client/node_modules
 server/node_modules
 */Dcode
+.DS_Store
